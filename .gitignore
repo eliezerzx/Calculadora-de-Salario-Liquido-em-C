@@ -1,52 +1,66 @@
-# Prerequisites
-*.d
+#include <stdio.h>
+#include <conio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+int main() 
+{
+    float valorHora;
+    float horasTrabalhadas;
+    float salarioBruto;
+    float ir;
+    float inss;
+    float fgts;
+    float totalDescontos;
+    float salarioLiquido;
 
-# Linker output
-*.ilk
-*.map
-*.exp
+    printf ("-----------------------------------------------------------------");
+    printf ("\n\n Digite o valor da sua hora:");
+    scanf ("%f", &valorHora);
+    printf ("\n-----------------------------------------------------------------");
+    
+    printf ("\n\n Digite a quantidade de horas trabalhadas");
+    scanf ("%f", &horasTrabalhadas);
+    printf ("\n-----------------------------------------------------------------");
 
-# Precompiled Headers
-*.gch
-*.pch
+    salarioBruto = ( valorHora * horasTrabalhadas);
+    
+    if ( salarioBruto <= 900 )
+    {
+        ir = 0;
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+    } else if ( salarioBruto <= 1500 )
+    {
+        ir = salarioBruto * 0.05;
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+    } else if ( salarioBruto <= 2500 )
+    {
+        ir = salarioBruto * 0.10;
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+    } else if ( salarioBruto >= 2500 )
+    {
+        ir = salarioBruto * 0.20;
+    }
+    
+    //calculos
+    inss = salarioBruto * 0.10;
+    fgts = salarioBruto * 0.11;
+    totalDescontos = ir + inss;
+    salarioLiquido = salarioBruto - totalDescontos;
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+    printf ("\n-----------------------------------------------------------------");
+    printf("\n\t - Salario Bruto : R$ %.2f", salarioBruto);
+    printf ("\n-----------------------------------------------------------------");
+    printf("\n\t - IR (5%%) : R$ %.2f", ir);
+    printf ("\n-----------------------------------------------------------------");
+    printf("\n\t - INSS (10%%) : R$ %.2f", inss);
+    printf ("\n-----------------------------------------------------------------");
+    printf("\n\t - FGTS (11%%) : R$ %.2f", fgts);
+    printf ("\n-----------------------------------------------------------------");
+    printf("\n\t - Total de descontos : R$ %.2f", totalDescontos);
+    printf ("\n-----------------------------------------------------------------");
+    printf("\n\t - Salario Liquido : R$ %.2f", salarioLiquido);
+    printf ("\n-----------------------------------------------------------------");
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+
+    return 0;
+    
+}
